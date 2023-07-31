@@ -1,28 +1,21 @@
-// Cart.js
-import { useState, useEffect } from 'react';
+// Checkout.js
+import React, { useContext } from 'react';
 import { Table, Button } from 'reactstrap';
-import { menuData } from './MenuData.js';
 import { Link } from 'react-router-dom';
+import { CartContext } from './CartContext';
 
 const Checkout = () => {
-  const [cart, setCart] = useState([]);
-  const [inventory, setInventory] = useState(menuData);
-  const [quantity, setQuantity] = useState(0);
-  // 從localStorage取得購物車資料
-  useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
-    setCart(storedCart);
-  }, []);
+  const { cart, setCart, inventory, setInventory } = useContext(CartContext);
 
   // 購物車中的刪除按鈕
   const deleteCartItem = (index) => {
     const newCart = [...cart];
     // 用splice刪掉index的索引位置的商品,1表示只刪除這一個商品
     newCart.splice(index, 1);
-    // 更新購物車並存到localStorage
+    // 更新購物車
     setCart(newCart);
-    localStorage.setItem('cart', JSON.stringify(newCart));
   };
+  
   const updateQuantity = (product, newQuantity) => {
     if (newQuantity > 0) {
       // 從購物車中尋找該商品
@@ -38,12 +31,6 @@ const Checkout = () => {
             item.name == product.name ? { ...item, quantity: newQuantity } : item
           );
           setCart(updatedCart);
-
-          // 更新庫存
-          // const updatedInventory = inventory.map(item =>
-          //   item.name == product.name ? { ...item, quantity:  newQuantity } : item
-          // );
-          // setInventory(updatedInventory);
         } else {
           alert('庫存不足');
         }
@@ -51,12 +38,6 @@ const Checkout = () => {
         if (newQuantity <= existingInventoryItem.quantity) {
           // 新增商品至購物車
           setCart([...cart, { ...product, quantity: newQuantity }]);
-
-          // 更新庫存
-          // const updatedInventory = inventory.map(item =>
-          //   item.name == product.name ? { ...item, quantity:  newQuantity } : item
-          // );
-          // setInventory(updatedInventory);
         } else {
           alert('庫存不足');
         }
@@ -66,9 +47,7 @@ const Checkout = () => {
     }
   };
 
-
   const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-
 
   return (
     <div className="container mt-3">
@@ -105,7 +84,6 @@ const Checkout = () => {
           <Link to="/Main" type="button" className="btn btn-warning me-2">繼續購物</Link>
           <button to="/" className="btn btn-warning">結帳去</button>
         </tbody>
-
       </Table>
     </div>
   );
