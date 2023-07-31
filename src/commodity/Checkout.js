@@ -88,14 +88,14 @@ const Checkout = () => {
               <td>{item.name}</td>
               <td>{item.price}</td>
               <div className="d-flex align-items-center">
-                <button className="btn btn-outline-secondary" type="button" onClick={() => setQuantity((pre) => pre - 1)}>-</button>
+                <button className="btn btn-outline-secondary" type="button"onClick={() => updateQuantity(item, item.quantity - 1)}>-</button>
                 <input
                   type="text"
                   className="form-control text-center"
-                  value={quantity}
-                  onChange={(e) => updateQuantity(parseInt(e.target.value))}
+                  value={item.quantity}
+                  onChange={(e) => updateQuantity(item, parseInt(e.target.value))}
                 />
-                <button className="btn btn-outline-secondary " onClick={() => setQuantity((pre) => pre + 1)}>+</button>
+                <button className="btn btn-outline-secondary " onClick={() => updateQuantity(item, item.quantity + 1)}>+</button>
               </div>
               <td><Button color="danger" onClick={() => deleteCartItem(index)}>X</Button></td>
             </tr>

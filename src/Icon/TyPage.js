@@ -13,9 +13,9 @@ function TyPage() {
     useEffect(() => {
         //用useEffect讓set裡面的值有變動的時候就更新頁面
         Axios.get(targetUrl).then((res) => {
-            //先找出資料中你要找的資料的物件
+            //先找出資料中你要找的資料的物件,取records下的tropicalCyclones的tropicalCyclone
             const tropicalCyclone = res.data.records.tropicalCyclones.tropicalCyclone[0];
-            //測試抓到德是不是自己要的資料
+            //測試抓到的是不是自己要的資料
             console.log(tropicalCyclone.analysisData.fix);
             console.log(tropicalCyclone.forecastData.fix);
             console.log('颱風名稱:' + tropicalCyclone.cwbTyphoonName);
@@ -33,7 +33,7 @@ function TyPage() {
     });
 
     const foreCastIcon = new L.Icon({
-        iconUrl: "/images/i-logo.png",
+        iconUrl: "/images/i-loo.png",
         iconSize: [100, 80],
     })
 
