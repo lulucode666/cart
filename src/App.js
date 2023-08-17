@@ -7,6 +7,7 @@ import More from './Icon/More';
 import About from './Home/About';
 import Home from './Home/Home';
 import TyPage from './Icon/TyPage';
+import Footer from './Footer';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path='/More' element={<More />} />
           <Route path='/TyPage' element={<TyPage />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   );

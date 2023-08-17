@@ -17,7 +17,7 @@ export const AuthContextProvider = (props) => {
     }
 
     //登入成功
-    const loginHandler = (name, pswd) => {
+    const loginHandler = (name, psd) => {
         setIsLoggedIn(true);
         setName(name);
     }

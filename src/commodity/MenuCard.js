@@ -15,8 +15,7 @@ export const MenuCard = ({ menu, addToCart }) => {
                 {/* 判斷高庫存的有HOT標籤增加點擊率 */}
                 <p className="card-text">{menu.quantity > 10 ? <span className="badge bg-danger">HOT</span> : null}</p>
                 <p className="card-text foodContent">{menu.characteristic}</p>
-                <p className="card-text">{menu.size}</p>
-                <p className="card-text">${menu.price}</p>
+                <p className="card-text">限時特賣 {menu.price}元 / {menu.size}</p>
                 {/* 商品計數 */}
                 <div className="d-flex align-items-center">
                     <button className="btn btn-outline-secondary" type="button" onClick={() => setQuantity((pre) => pre - 1)}>-</button>

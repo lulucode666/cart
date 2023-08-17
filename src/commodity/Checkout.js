@@ -71,42 +71,52 @@ const Checkout = () => {
 
 
   return (
-    <div className="container mt-3">
-      <h2>購物車內容</h2>
-      <Table>
-        <thead>
-          <tr>
-            <th>商品名稱</th>
-            <th>價格</th>
-            <th>數量</th>
-            <th>操作</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cart.map((item, index) => (
-            <tr key={index}>
-              <td>{item.name}</td>
-              <td>{item.price}</td>
-              <div className="d-flex align-items-center">
-                <button className="btn btn-outline-secondary" type="button"onClick={() => updateQuantity(item, item.quantity - 1)}>-</button>
-                <input
-                  type="text"
-                  className="form-control text-center"
-                  value={item.quantity}
-                  onChange={(e) => updateQuantity(item, parseInt(e.target.value))}
-                />
-                <button className="btn btn-outline-secondary " onClick={() => updateQuantity(item, item.quantity + 1)}>+</button>
-              </div>
-              <td><Button color="danger" onClick={() => deleteCartItem(index)}>X</Button></td>
-            </tr>
-          ))}
-          <h2>Total Price: ${totalPrice}</h2>
+    <div className='wrapper2'>
+      <div className="container" style={{ minHeight: '100vh' }}>
+        <div style={{ height: '1000' }}>
+          <h2 className='title2'>購物車內容</h2>
+          {cart.length === 0 ? (
+            <>
+              <h2>喵嗚！你還沒買東西餒！</h2>
+              <Link to="/Main" type="button" className="btn btn-warning me-2">購物去～</Link>
+            </>) : (
+            <Table>
+              <thead>
+                <tr>
+                  <th>商品名稱</th>
+                  <th>價格</th>
+                  <th>數量</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cart.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.name}</td>
+                    <td>{item.price}</td>
+                    <div className="d-flex align-items-center">
+                      <button className="btn btn-outline-secondary" type="button" onClick={() => updateQuantity(item, item.quantity - 1)}>-</button>
+                      <input
+                        type="text"
+                        className="form-control text-center"
+                        value={item.quantity}
+                        onChange={(e) => updateQuantity(item, parseInt(e.target.value))}
+                      />
+                      <button className="btn btn-outline-secondary " onClick={() => updateQuantity(item, item.quantity + 1)}>+</button>
+                    </div>
+                    <td><Button color="danger" onClick={() => deleteCartItem(index)}>X</Button></td>
+                  </tr>
+                ))}
+                <h2>Total Price: ${totalPrice}</h2>
 
-          <Link to="/Main" type="button" className="btn btn-warning me-2">繼續購物</Link>
-          <button to="/" className="btn btn-warning">結帳去</button>
-        </tbody>
+                <Link to="/Main" type="button" className="btn btn-warning me-2">繼續購物</Link>
+                <button to="/" className="btn btn-warning">結帳去</button>
+              </tbody>
 
-      </Table>
+            </Table>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

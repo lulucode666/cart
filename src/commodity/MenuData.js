@@ -2,7 +2,7 @@ export const menuData = [
     {   
         id:1,
         picture: "https://cdn-v2.dogcatstar.com/prod/2018/11/02/143267/momkittycat2022-P1-510x510.jpg.webp",
-        name: "營養罐",
+        name: "每隻貓咪都必吃的營養加分罐罐",
         characteristic: "幼貓、哺乳孕貓、術後貓作營養補充",
         size: "165G",
         price:75,

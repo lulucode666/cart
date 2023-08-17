@@ -38,12 +38,13 @@ function TyPage() {
     })
 
     return (
-        <div>
+        <div className="wrapper2">
+            <div className='d-flex' style={{ minHeight: '100vh',textAlign:'center',borderRadius:'30' }}>
             {/* 使用react-leaflet的套件 */}
             {/* center是緯經度,scrollWheelZoom你在滑動滾輪時會不會控制到地圖大小,
             zoom值越小看到的越近,style是限制地圖大小在視窗範圍??*/}
             <MapContainer center={[23.5, 121]} zoom={5} scrollWheelZoom={false}
-                style={{ width: "100vw", height: "100vh" }}>
+                style={{ width: "100vw", height: "100vh"}}>
                 {/* 引用地圖的套件 */}
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -90,6 +91,7 @@ function TyPage() {
                     })
                 }
             </MapContainer>
+        </div>
         </div>
     );
 }

@@ -1,0 +1,59 @@
+.footer {
+    display: flex;
+    padding: 1rem 0rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+    background-color: aqua;
+    min-height: 10vh;
+    border-top: 1px solid black;
+    // 按鈕圖案設計
+  
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+  
+      .btn1 {
+        margin: 0rem 0.4rem;
+        width: 3rem;
+        height: 3rem;
+        /*父容器設定相對位置*/
+        position: relative;
+        /*隱藏溢出圖片*/
+        overflow: hidden;
+        border-radius: 50%;
+  
+  
+        .image-container {
+          /*設置在按鈕中心的圖片容器*/
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          transition: transform 0.3s;
+          border-radius: 50%;
+        }
+  
+        &:hover .image-container {
+          /*不讓放大容器跑掉設定*/
+          transform: translate(-50%, -50%) scale(2);
+          border-radius: 50%;
+        }
+  
+        .image-container img {
+          width: 100%;
+          height: 100%;
+          transform: scale(2);
+          border-radius: 50%;
+        }
+      }
+    }
+  
+  
+  
+  
+  
+  
+  }

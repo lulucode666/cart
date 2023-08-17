@@ -1,0 +1,30 @@
+.carousel1-nav-icon {
+    height: 48px;
+    width: 40px;
+}
+
+.carousel-item1 {
+    .col,
+    .col-sm,
+    .col-md {
+        margin: 8px;
+        height: 380px;
+        width: 250px;
+        background-size: cover;
+        background-position: center center;
+    }
+}
+
+.card-zoom {
+    transition: transform 0.5s ease-in-out;
+    border-radius: 20px;
+}
+
+.card-zoom:hover {
+    transform: scale(1.05);
+    border-radius: 20px;
+}
+
+.txt{
+    font-size: 1.2rem;
+}

@@ -68,60 +68,63 @@ const Main = () => {
     };
 
     return (
-        <div className="container mt-3">
-            <h2>花生ㄟ購物車</h2>
-            <button
-                type="button" className="btn btn-outline-warning"
-                onClick={openModal}
-            >查看購物車</button>
-            <div className={`modal ${isModalOpen ? 'show' : ''}`} tabIndex="-1" role="dialog"
-                style={{ display: isModalOpen ? 'block' : 'none' }}>
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title">購物車</h5>
-                            <button type="button" className="btn-close" onClick={closeModal} aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            <Table>
-                                <thead>
-                                    <tr>
-                                        <th>商品名稱</th>
-                                        <th>價格</th>
-                                        <th>數量</th>
-                                        <th>操作</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {cart.map((item, index) => (
-                                        <tr key={index}>
-                                            <td>{item.name}</td>
-                                            <td>{item.price}</td>
-                                            <td>{item.quantity}</td>
-                                            <td><Button color="danger" onClick={() => deleteCartItem(index)}>X</Button></td>
+        <div className="wrapper2">
+            <div className="container" style={{ minHeight: '100vh' }}>
+                <h2 className="title2">花生の購物車</h2>
+                {/* <button
+                    type="button" className="btn btn-outline-warning d-flex"
+                    onClick={openModal}
+                    style={{ marginRight: '0px' }}
+                >查看購物車</button> */}
+                <div className={`modal ${isModalOpen ? 'show' : ''}`} tabIndex="-1" role="dialog"
+                    style={{ display: isModalOpen ? 'block' : 'none' }}>
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">購物車</h5>
+                                <button type="button" className="btn-close" onClick={closeModal} aria-label="Close"></button>
+                            </div>
+                            <div className="modal-body">
+                                <Table>
+                                    <thead>
+                                        <tr>
+                                            <th>商品名稱</th>
+                                            <th>價格</th>
+                                            <th>數量</th>
+                                            <th>操作</th>
                                         </tr>
-                                    ))}
-                                </tbody>
-                                <div>
-                                    <button type="button" className="btn btn-warning me-2" onClick={closeModal}>繼續購物</button>
-                                    <Link to="/checkout" className="btn btn-warning">結帳去</Link>
-                                </div>
-                            </Table>
+                                    </thead>
+                                    <tbody>
+                                        {cart.map((item, index) => (
+                                            <tr key={index}>
+                                                <td>{item.name}</td>
+                                                <td>{item.price}</td>
+                                                <td>{item.quantity}</td>
+                                                <td><Button color="danger" onClick={() => deleteCartItem(index)}>X</Button></td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                    <div>
+                                        <button type="button" className="btn btn-warning me-2" onClick={closeModal}>繼續購物</button>
+                                        <Link to="/checkout" className="btn btn-warning">結帳去</Link>
+                                    </div>
+                                </Table>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div className="row justify-content-around">
+                    {menuData.map((menu1) => (
+                        //要把MenuCard裡面的component獨立出來,這樣按鈕在下單的時候每個component才會是獨立的
+                        //下面menu=是指MenuCard中的箭頭函式中的值{menu},map(menu1)是下面的{menu1}
+                        <MenuCard key={menu1.id}
+                            menu={menu1}
+                            addToCart={addToCart}
+                        />
+                    ))}
+                </div>
             </div>
-            <div className="row justify-content-around">
-                {menuData.map((menu1) => (
-                    //要把MenuCard裡面的component獨立出來,這樣按鈕在下單的時候每個component才會是獨立的
-                    //下面menu=是指MenuCard中的箭頭函式中的值{menu},map(menu1)是下面的{menu1}
-                    <MenuCard key={menu1.id}
-                        menu={menu1}
-                        addToCart={addToCart}
-                    />
-                ))}
-            </div>
-        
+
         </div>
     );
 };

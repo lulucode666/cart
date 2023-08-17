@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { ShoppingCartSimple, PawPrint, User } from "@phosphor-icons/react";
+import Footer from './Footer';
+
 
 const NavBar = () => {
     return (
@@ -47,6 +49,9 @@ const NavBar = () => {
                     </div>
                 </div>
             </nav>
+
+            <Outlet />
+            
         </>
     )
 };
