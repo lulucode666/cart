@@ -15,16 +15,18 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <NavBar />
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path='/Main' element={<Main />} />
-          <Route path='/Checkout' element={<Checkout />} />
-          <Route path='/About' element={<About />} />
-          <Route path='/Login' element={<Login />} />
-          <Route path='/More' element={<More />} />
-          <Route path='/TyPage' element={<TyPage />} />
-        </Routes>
+        <NavBar />
+        <CartProvider>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path='/Main' element={<Main />} />
+            <Route path='/Checkout' element={<Checkout />} />
+            <Route path='/About' element={<About />} />
+            <Route path='/Login' element={<Login />} />
+            <Route path='/More' element={<More />} />
+            <Route path='/TyPage' element={<TyPage />} />
+          </Routes>
+        </CartProvider>
         <Footer />
       </BrowserRouter>
     </>
