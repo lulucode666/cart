@@ -1,4 +1,6 @@
+// App.js
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { CartProvider } from './commodity/CartContext';
 import NavBar from './NavBar';
 import Main from './commodity/Main';
 import Checkout from './commodity/Checkout';
@@ -8,7 +10,6 @@ import About from './Home/About';
 import Home from './Home/Home';
 import TyPage from './Icon/TyPage';
 import Footer from './Footer';
-
 
 function App() {
   return (

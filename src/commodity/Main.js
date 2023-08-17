@@ -1,13 +1,15 @@
 import { menuData } from "./MenuData";
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useContext} from 'react';
 import { MenuCard } from "./MenuCard";
 import { Button, Table } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { CartContext } from './CartContext';
 
 const Main = () => {
-    const initialCart = JSON.parse(localStorage.getItem('cart')) || [];
+    // const initialCart = JSON.parse(localStorage.getItem('cart')) || [];
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [cart, setCart] = useState(initialCart);
+    // const [cart, setCart] = useState(initialCart);
+    const { cart, setCart } = useContext(CartContext);
     //Modal彈跳視窗的開關設定
     const openModal = () => {
         setIsModalOpen(true);
